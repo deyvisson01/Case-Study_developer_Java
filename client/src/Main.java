@@ -31,14 +31,14 @@ public class MainClient {
 
                     switch (op){
                         case 1: // INÍCIO DA OPÇÃO DE INSERÇÃO DE VENDA - VENDEDOR
-                        String cod_seller = "";
+                        String code_seller = "";
                         String cliente = "";
                         String cod_product = "";
                         String quantidade = "";
-                        float quantidade = "";
+                        String valor_final = "";
                         System.out.println("INSIRA OS DADOS PARA VENDA!\n");
                         System.out.println("Código do vendedor ->");
-                        cod_seller = scMenu.nextLine();
+                        code_seller = scMenu.nextLine();
 
                         System.out.println("Cliente ->");
                         cliente = scMenu.nextLine();
@@ -50,8 +50,18 @@ public class MainClient {
                         quantidade = scQuantidade.nextInt();
 
                         System.out.println("Valor final da venda ->");
-                        price = scMenu.nextLine();
+                        valor_final = scMenu.nextLine();
 
+                        if(functions.isCodeListSellers(code_seller)){
+                            OccurrenceBoletin bo = new OccurrenceBoletin(code_sale,code_seller,cliente,cod_product,quantidade,valor_final);
+                            functions.ListBO.add(bo);
+                            Message msgTosend = new Message(0,countIDMsg,"addBO",3,"-",bo);
+                            functions.doOperation(msgTosend);
+                            System.out.println("-> Completo <-");
+                            break;
+                        }else{
+                            System.out.println("! Vendedor não cadastrado !");
+                        }
 
                             break;
                         case 2: // LISTAGEM DE VENDAS
@@ -65,18 +75,18 @@ public class MainClient {
                             // INÍCIO DA OPÇÃO DE EDIÇÃO DE VENDA - VENDEDOR
                             switch (op){
                                 case 1: // 
-                                String cod_sale = "";
-                                String cod_seller = "";
+                                String code_sale = "";
+                                String code_seller = "";
                                 String cliente = "";
                                 String cod_product = "";
                                 String quantidade = "";
-                                float quantidade = "";
+                                String valor_Final = "";
                                 System.out.println("INSIRA OS DADOS PARA A NOVA VENDA!\n");
                                 System.out.println("Código da venda ->");
-                                cod_sale = scMenu.nextLine();
+                                code_sale = scMenu.nextLine();
 
                                 System.out.println("Código do vendedor ->");
-                                cod_seller = scMenu.nextLine();
+                                code_seller = scMenu.nextLine();
 
                                 System.out.println("Cliente ->");
                                 cliente = scMenu.nextLine();
@@ -88,7 +98,18 @@ public class MainClient {
                                 quantidade = scQuantidade.nextInt();
 
                                 System.out.println("Valor final da venda ->");
-                                price = scMenu.nextLine();
+                                valor_Final = scMenu.nextLine();
+
+                                if(functions.isCodeListSellers(code_seller)){
+                                    OccurrenceBoletin bo = new OccurrenceBoletin(code_sale,code_seller,cliente,cod_product,quantidade,valor_final);
+                                    functions.ListBO.add(bo);
+                                    Message msgTosend = new Message(0,countIDMsg,"addBO",3,"-",bo);
+                                    functions.doOperation(msgTosend);
+                                    System.out.println("-> Completo <-");
+                                    break;
+                                }else{
+                                    System.out.println("! Vendedor não cadastrado !");
+                                }
                                     
                                     break;
                                 case 2: // INÍCIO DA OPÇÃO DE DELETAR VENDA - VENDEDOR
@@ -123,7 +144,7 @@ public class MainClient {
                                     ");
                     op = sc.nextInt();
                         switch (op){
-                            case 1: // INÍCIO DA OPÇÃO DE INSERIR ADMINISTRADOR
+                            case 1: // INÍCIO DA OPÇÃO DE INSERIR VENDEDOR
                             String NameSeller = "";
                             String CPFV = "";
                             System.out.println("-> Cadastro de Vendedor <-");
@@ -132,7 +153,7 @@ public class MainClient {
                             System.out.print("CPF: ");
                             CPFV = scMenu.nextLine();
 
-                            
+                            functions.ListSellers.add(new Person(NomeV,CPFV));
                             System.out.println("-> Completo <-");
                                 
                                 break;
@@ -163,18 +184,18 @@ public class MainClient {
                                 switch (op){
                                     case 1: // 
                                         
-                                    String cod_sale = "";
-                                    String cod_seller = "";
+                                    String code_sale = "";
+                                    String code_seller = "";
                                     String cliente = "";
                                     String cod_product = "";
                                     String quantidade = "";
                                     float quantidade = "";
                                     System.out.println("INSIRA OS DADOS PARA A NOVA VENDA!\n");
                                     System.out.println("Código da venda ->");
-                                    cod_sale = scMenu.nextLine();
+                                    code_sale = scMenu.nextLine();
 
                                     System.out.println("Código do vendedor ->");
-                                    cod_seller = scMenu.nextLine();
+                                    code_seller = scMenu.nextLine();
 
                                     System.out.println("Cliente ->");
                                     cliente = scMenu.nextLine();
