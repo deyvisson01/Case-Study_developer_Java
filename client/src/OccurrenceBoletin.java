@@ -3,37 +3,37 @@ import org.json.JSONObject;
 
 public class OccurrenceBoletin {
 
-    private String Cod_sale;
+    private String Code_sale;
     private Person Person;
-    private String Cod_product;
+    private String Code_product;
     private String Cliente;
     private String Date_Of_Sale;
     private String Quantidade;
     private String Valor_Final;
 
-    public OccurrenceBoletin(String cod_sale, 
+    public OccurrenceBoletin(String code_sale, 
                             Person person, 
-                            String cod_product,
+                            String code_product,
                             String cliente,
-                            String date_Of_Birth,
+                            String date_Of_Sale,
                             String quantidade,
                             String valor_Final ) {
 
-        this.Cod_sale = cod_sale;
+        this.Code_sale = code_sale;
         this.Person = person;
-        this.Cod_product = cod_product;
+        this.Code_product = code_product;
         this.Cliente = cliente;
-        this.Date_Of_Sale = date_Of_Birth;
+        this.Date_Of_Sale = date_Of_Sale;
         this.Quantidade = quantidade;
         this.Valor_Final = valor_Final;
     }
 
-    public Cod_sale getCod_sale() {
-        return Cod_sale;
+    public Code_sale getCode_sale() {
+        return Code_sale;
     }
 
-    public void setCod_sale(String cod_sale) {
-        Cod_sale = cod_sale;
+    public void setCode_sale(String code_sale) {
+        Code_sale = code_sale;
     }
 
     public Person getPerson() {
@@ -44,12 +44,12 @@ public class OccurrenceBoletin {
         Person = person;
     }
 
-    public String getCod_product() {
-        return Cod_product;
+    public String getCode_product() {
+        return Code_product;
     }
 
-    public void setCod_product(String cod_product) {
-        Cod_product = cod_product;
+    public void setCode_product(String code_product) {
+        Code_product = code_product;
     }
 
     public String getCliente() {
@@ -60,7 +60,7 @@ public class OccurrenceBoletin {
         Cliente = cliente;
     }
 
-    public boolean isDate_Of_Sale() {
+    public String getisDate_Of_Sale() {
         return Date_Of_Sale;
     }
 
@@ -87,9 +87,9 @@ public class OccurrenceBoletin {
     public JSONObject getJSONOccurenceBoletin(OccurrenceBoletin occurrenceBoletin){
         JSONObject obj_to_return = new JSONObject();
         try{
-            obj_to_return.put("Cod_sale",occurrenceBoletin.getCod_sale().getJSONPerson(occurrenceBoletin.getCod_sale()));
+            obj_to_return.put("Code_sale",occurrenceBoletin.getCode_sale().getJSONPerson(occurrenceBoletin.getCode_sale()));
             obj_to_return.put("Person",occurrenceBoletin.getPerson().getJSONPerson(occurrenceBoletin.getPerson()));
-            obj_to_return.put("Cod_product",occurrenceBoletin.getCod_product());
+            obj_to_return.put("Code_product",occurrenceBoletin.getCode_product());
             obj_to_return.put("Cliente",occurrenceBoletin.getCliente());
             obj_to_return.put("Date_Of_Sale",occurrenceBoletin.isDate_Of_Sale());
             obj_to_return.put("Quantidade",occurrenceBoletin.getQuantidade());
@@ -106,7 +106,7 @@ public class OccurrenceBoletin {
         try {
             JSONObject obj = new JSONObject(JSONSTROccurrenceBoletin);
             person = person.convertStrJSONToPerson(obj.get("Person").toString());
-            boletin = new OccurrenceBoletin(person,obj.getString("Cod_product"),obj.getString("Cliente"),obj.getBoolean("Date_Of_Sale"),obj.getString("Quantidade"),obj.getString("Valor_Final"));
+            boletin = new OccurrenceBoletin(person,obj.getString("Code_product"),obj.getString("Cliente"),obj.getBoolean("Date_Of_Sale"),obj.getString("Quantidade"),obj.getString("Valor_Final"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -116,9 +116,9 @@ public class OccurrenceBoletin {
     @Override
     public String toString() {
         return "OccurrenceBoletin{" +
-                "Cod_sale=" + Cod_sale +
+                "Code_sale=" + Code_sale +
                 ", Person=" + Person +
-                ", Cod_product='" + Cod_product + '\'' +
+                ", Code_product='" + Code_product + '\'' +
                 ", Cliente='" + Cliente + '\'' +
                 ", Date_Of_Sale=" + Date_Of_Sale +
                 ", Quantidade='" + Quantidade + '\'' +

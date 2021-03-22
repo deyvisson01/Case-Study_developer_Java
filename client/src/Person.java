@@ -1,20 +1,20 @@
 import org.json.*;
 public class Person {
-    private String Cod;
+    private String Code;
     private String Name;
     private String CPF;
 
-    public Person(String Cod, String name, String CPF) {
-        this.Cod = Cod;
+    public Person(String Code, String name, String CPF) {
+        this.Code = Code;
         Name = name;
         this.CPF = CPF;
     }
-    public String getCod() {
-        return Cod;
+    public String getCode() {
+        return Code;
     }
 
-    public void setCod(String CPF) {
-        this.Cod = CPF;
+    public void setCodee(String CPF) {
+        this.Code = Code;
     }
     public String getName() {
         return Name;
@@ -35,7 +35,7 @@ public class Person {
     public JSONObject getJSONPerson(Person OBJ_Person){
         JSONObject obj_to_return = new JSONObject();
         try{
-            obj_to_return.put("Cod",OBJ_Person.getCod());
+            obj_to_return.put("Codee",OBJ_Person.getCode());
             obj_to_return.put("Name",OBJ_Person.getName());
             obj_to_return.put("CPF",OBJ_Person.getCPF());
         }catch (JSONException e){
@@ -47,7 +47,7 @@ public class Person {
         Person person = null;
         try {
             JSONObject obj = new JSONObject(JSONSTRPerson);
-            person = new Person(obj.getString("Cod"),obj.getString("Name"),obj.getString("CPF"));
+            person = new Person(obj.getString("Code"),obj.getString("Name"),obj.getString("CPF"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -56,7 +56,7 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "Cod='" + Cod + '\'' +
+                "Code='" + Code + '\'' +
                 ", Name='" + Name + '\'' +
                 ", CPF='" + CPF + '\'' +
                 '}';
